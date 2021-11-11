@@ -47,7 +47,7 @@ class TextRecognizer(object):
             "character_dict_path": args.rec_char_dict_path,
             "use_space_char": args.use_space_char
         }
-        if self.rec_algorithm == "SRN":
+        if self.rec_algorithm == "SRN": 
             postprocess_params = {
                 'name': 'SRNLabelDecode',
                 "character_type": args.rec_char_type,

@@ -9,8 +9,8 @@ Global:
   eval_batch_step: [0, 2000]
   cal_metric_during_train: True
   pretrained_model: /home/zhaohj/Documents/checkpoint/paddOCR/pretrained/server/rec/best_accuracy
-  checkpoints:
-  save_inference_dir:
+  checkpoints: ./output/rec_chinese_common_v2.0/best_accuracy
+  save_inference_dir: ./output/rec_chinese_common_v2.0/inference
   use_visualdl: True
   infer_img: doc/imgs_words/ch/word_1.jpg
   # for data or label process
@@ -62,7 +62,7 @@ Train:
   dataset:
     name: SimpleDataSet
     data_dir: /home/zhaohj/Documents/dataset/Kaggle/AIWIN/OCR2021/2021A_T1_Task1_数据集/训练集
-    label_file_list: ["/home/zhaohj/Documents/dataset/Kaggle/AIWIN/OCR2021/2021A_T1_Task1_数据集/训练集/train.txt"]
+    label_file_list: ["/home/zhaohj/Documents/dataset/Kaggle/AIWIN/OCR2021/2021A_T1_Task1_数据集/训练集/label.txt"]
     transforms:
       - DecodeImage: # load image
           img_mode: BGR
@@ -77,7 +77,7 @@ Train:
     shuffle: True
     batch_size_per_card: 32
     drop_last: True
-    num_workers: 8
+    num_workers: 4
 
 Eval:
   dataset:
@@ -97,4 +97,4 @@ Eval:
     shuffle: False
     drop_last: False
     batch_size_per_card: 32
-    num_workers: 8
+    num_workers: 4
