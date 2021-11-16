@@ -48,6 +48,8 @@ class BaseModel(nn.Layer):
         # build backbone, backbone is need for del, rec and cls
         config["Backbone"]['in_channels'] = in_channels
         self.backbone = build_backbone(config["Backbone"], model_type)
+        for param in self.backbone.parameters():
+            param.trainable = False
         in_channels = self.backbone.out_channels
 
         # build neck

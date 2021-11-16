@@ -1,16 +1,16 @@
 Global:
   use_gpu: false
-  epoch_num: 100
+  epoch_num: 30
   log_smooth_window: 20
   print_batch_step: 10
-  save_model_dir: ./output/rec_chinese_common_v2.0
+  save_model_dir: ./output/rec_chinese_common_task2
   save_epoch_step: 10
   # evaluation is run every 2000 iterations after the 0th iteration
   eval_batch_step: [0, 2000]
   cal_metric_during_train: True
-  pretrained_model: ./output/rec_chinese_common_v2.0/best_accuracy
-  checkpoints: 
-  save_inference_dir: ./output/rec_chinese_common_v2.0/inference
+  pretrained_model: ./output/task1_best/best_accuracy
+  checkpoints:
+  save_inference_dir: ./output/rec_chinese_common_task2/inference
   use_visualdl: True
   infer_img: doc/imgs_words/ch/word_1.jpg
   # for data or label process
@@ -67,7 +67,7 @@ Train:
       - DecodeImage: # load image
           img_mode: BGR
           channel_first: False
-      - RecAug: 
+      - RecAug:
       - CTCLabelEncode: # Class handling label
       - RecResizeImg:
           image_shape: [3, 32, 320]
@@ -75,7 +75,7 @@ Train:
           keep_keys: ['image', 'label', 'length'] # dataloader will return list in this order
   loader:
     shuffle: True
-    batch_size_per_card: 32
+    batch_size_per_card: 16
     drop_last: True
     num_workers: 4
 
@@ -96,5 +96,5 @@ Eval:
   loader:
     shuffle: False
     drop_last: False
-    batch_size_per_card: 32
+    batch_size_per_card: 16
     num_workers: 4
