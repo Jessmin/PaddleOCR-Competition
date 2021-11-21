@@ -1,5 +1,5 @@
 Global:
-  output_num: 10
+  output_num: 30000
   output_dir: output_data
   use_gpu: true
   image_height: 32
@@ -18,7 +18,7 @@ StyleSampler:
 CorpusGenerator:
   method: FileCorpus
   language: ch
-  corpus_file: examples/corpus/example.txt
+  corpus_file: /home/zhaohj/Documents/dataset/Kaggle/AIWIN/label.txt
 Predictor:
   method: StyleTextRecPredictor
   algorithm: StyleTextRec
