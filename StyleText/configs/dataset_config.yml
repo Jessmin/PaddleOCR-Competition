@@ -1,7 +1,7 @@
 Global:
   output_num: 10
   output_dir: output_data
-  use_gpu: false
+  use_gpu: true
   image_height: 32
   image_width: 320
   standard_font: fonts/en_standard.ttf
@@ -12,8 +12,8 @@ TextDrawer:
     ko: fonts/ko_standard.ttf
 StyleSampler:
   method: DatasetSampler
-  image_home: examples
-  label_file: examples/image_list.txt
+  image_home: /home/zhaohj/Documents/dataset/Kaggle/AIWIN/OCR2021/2021A_T1_Task1_数据集/训练集
+  label_file: /home/zhaohj/Documents/dataset/Kaggle/AIWIN/OCR2021/2021A_T1_Task1_数据集/训练集/style.txt
   with_label: true
 CorpusGenerator:
   method: FileCorpus
