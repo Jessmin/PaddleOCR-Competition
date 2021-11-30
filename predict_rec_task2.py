@@ -42,5 +42,5 @@ for img_path in tqdm.tqdm(img_path_list):
     result = result[0]
     txt, confidence = result[0]
     output_dict[fname] = dict(result=txt, confidence=float(confidence))
-with open('/aiwin/ocr-A/submit/answer.json', 'w') as f:
+with open('answer.json', 'w') as f:
     data = json.dump(output_dict, f,indent=4, ensure_ascii=False)

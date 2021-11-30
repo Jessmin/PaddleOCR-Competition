@@ -9,12 +9,12 @@ Global:
   eval_batch_step: [0, 500]
   cal_metric_during_train: True
   pretrained_model: /home/zhaohj/Documents/checkpoint/paddOCR/pretrained/server/rec/best_accuracy
-  checkpoints:
-  save_inference_dir: 
+  checkpoints: ./output/rec_aiwin/best_accuracy
+  save_inference_dir: ./output/rec_aiwin/inference
   use_visualdl: True
   infer_img: doc/imgs_words/ch/word_1.jpg
   # for data or label process
-  character_dict_path: /home/zhaohj/Documents/dataset/Kaggle/AIWIN/OCR2021/extra/AIWIN_keys.txt
+  character_dict_path: ./ppocr/utils/AIWIN_keys.txt
   character_type: ch
   max_text_length: 25
   infer_mode: False
@@ -61,8 +61,8 @@ Metric:
 Train:
   dataset:
     name: SimpleDataSet
-    data_dir: /home/zhaohj/Documents/dataset/Kaggle/AIWIN/OCR2021/extra/images
-    label_file_list: ["/home/zhaohj/Documents/dataset/Kaggle/AIWIN/OCR2021/extra/train.txt"]
+    data_dir: /home/zhaohj/Documents/dataset/Kaggle/AIWIN/OCR2021/2021A_T1_Task1_数据集/训练集
+    label_file_list: ["/home/zhaohj/Documents/dataset/Kaggle/AIWIN/OCR2021/2021A_T1_Task1_数据集/训练集/train.txt"]
     transforms:
       - DecodeImage: # load image
           img_mode: BGR
@@ -75,15 +75,15 @@ Train:
           keep_keys: ['image', 'label', 'length'] # dataloader will return list in this order
   loader:
     shuffle: True
-    batch_size_per_card: 256
+    batch_size_per_card: 128
     drop_last: True
     num_workers: 8
 
 Eval:
   dataset:
     name: SimpleDataSet
-    data_dir: /home/zhaohj/Documents/dataset/Kaggle/AIWIN/OCR2021/extra/images
-    label_file_list: ["/home/zhaohj/Documents/dataset/Kaggle/AIWIN/OCR2021/extra/val.txt"]
+    data_dir: /home/zhaohj/Documents/dataset/Kaggle/AIWIN/OCR2021/2021A_T1_Task1_数据集/训练集
+    label_file_list: ["/home/zhaohj/Documents/dataset/Kaggle/AIWIN/OCR2021/2021A_T1_Task1_数据集/训练集/val.txt"]
     transforms:
       - DecodeImage: # load image
           img_mode: BGR
@@ -96,5 +96,5 @@ Eval:
   loader:
     shuffle: False
     drop_last: False
-    batch_size_per_card: 256
+    batch_size_per_card: 128
     num_workers: 8
