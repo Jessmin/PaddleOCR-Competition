@@ -4,17 +4,17 @@ Global:
   log_smooth_window: 20
   print_batch_step: 10
   save_model_dir: ./output/rec_aiwin
-  save_epoch_step: 20
+  save_epoch_step: 200
   # evaluation is run every 2000 iterations after the 0th iteration
-  eval_batch_step: [0, 500]
+  eval_batch_step: [0, 2000]
   cal_metric_during_train: True
-  pretrained_model: /home/zhaohj/Documents/checkpoint/paddOCR/pretrained/server/rec/best_accuracy
-  checkpoints: ./output/rec_aiwin/best_accuracy
+  pretrained_model: /home/zhaohj/Documents/checkpoint/pretrained/paddleOCR/server/rec/best_accuracy
+  checkpoints: ./output/rec_aiwin/latest
   save_inference_dir: ./output/rec_aiwin/inference
   use_visualdl: True
   infer_img: doc/imgs_words/ch/word_1.jpg
   # for data or label process
-  character_dict_path: ./ppocr/utils/AIWIN_keys.txt
+  character_dict_path: ./ppocr/utils/ppocr_keys_v1.txt
   character_type: ch
   max_text_length: 25
   infer_mode: False
@@ -28,7 +28,7 @@ Optimizer:
   beta2: 0.999
   lr:
     name: Cosine
-    learning_rate: 0.001
+    learning_rate: 0.00001
   regularizer:
     name: 'L2'
     factor: 0.00004
@@ -75,7 +75,7 @@ Train:
           keep_keys: ['image', 'label', 'length'] # dataloader will return list in this order
   loader:
     shuffle: True
-    batch_size_per_card: 128
+    batch_size_per_card: 16
     drop_last: True
     num_workers: 8
 
@@ -96,5 +96,5 @@ Eval:
   loader:
     shuffle: False
     drop_last: False
-    batch_size_per_card: 128
+    batch_size_per_card: 16
     num_workers: 8

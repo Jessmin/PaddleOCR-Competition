@@ -12,14 +12,15 @@ class Config(object):
 
 cfg = Config()
 cfg.rec_algorithm = "CRNN"
-cfg.rec_model_dir = './output/rec_chinese_common_v2.0/inference_v2'
+cfg.rec_model_dir = './output/rec_aiwin/inference'
 cfg.rec_image_shape = "3, 32, 320"
 cfg.rec_char_type = 'ch'
 cfg.rec_batch_num = 20
 cfg.max_text_length = 25
 cfg.rec_char_dict_path = './ppocr/utils/ppocr_keys_v1.txt'
+# cfg.rec_char_dict_path = './ppocr/utils/AIWIN_keys.txt'
 cfg.use_space_char = False
-cfg.use_gpu = False
+cfg.use_gpu = True
 cfg.gpu_mem = 4000
 cfg.enable_mkldnn = False
 cfg.benchmark = False
